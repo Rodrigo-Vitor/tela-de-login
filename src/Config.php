@@ -2,11 +2,11 @@
 namespace src;
 
 class Config {
-    const BASE_DIR = 'desafio/login/public';
+    const BASE_DIR = '/desafio/login/public';
 
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';
-    const DB_DATABASE = 'test';
+    const DB_DATABASE = 'login';
     CONST DB_USER = 'root';
     const DB_PASS = '';
 

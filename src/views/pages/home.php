@@ -1,3 +1,11 @@
+<?php 
+$msg = '';
+if (isset($_GET['msg'])) {
+    $msg = $_GET['msg'];
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +19,7 @@
     <div class="container-fluid d-flex">
         <div class="w-100 d-flex flex-column align-items-center justify-content-center" style="height:100vh" >
             <h2>Entrar</h2>
-            <form class="d-flex flex-column">
+            <form class="d-flex flex-column" method="POST" action="<?=$base?>/login">
                 <label class>
                     Email: <br> <input type="email" name="email">
                 </label>
@@ -25,7 +33,7 @@
         </div>
         <div class="bg-dark w-100 d-flex flex-column align-items-center justify-content-center text-light" style="height:100vh">
             <h2>Cadastrar</h2>
-            <form class="d-flex flex-column">
+            <form class="d-flex flex-column" method="POST" action="<?=$base?>/create">
                 <label>
                     Nome: <br> <input type="text" name="name">
                 </label>
@@ -36,7 +44,10 @@
                     Senha: <br> <input type="password" name="password">
                 </label>
                 <label>
-                    Confirmar senha: <br> <input type="password" name="passwordConfirm">
+                    Confirmar senha: <br> <input type="password" name="confPass">
+                    <?php if($msg): ?>
+                        <p><?=$msg ?></p>
+                    <?php endif; ?>
                 </label>
                 <label class="text-center mt-2">
                     <input type="submit" class="btn btn-success" value="Cadastrar">
