@@ -8,9 +8,13 @@ class UserController extends Controller {
     public function feed($args) {
         $data = User::select()->where('id', $args['id'])->execute();
         if(count($data) > 0) {
-            if(isset($_SESSION['user'])){
-                $this->render('feed');
-                exit;
+            if(isset($_SESSION['user']) ) {
+                if($data[0]['id'] === $_SESSION['user']['id']){
+                    $this->render('feed');
+                    exit;
+                } else {
+                    $this->redirect('/feed/'.$_SESSION['user']['id']);
+                }
             }
         }
         $this->redirect('/');

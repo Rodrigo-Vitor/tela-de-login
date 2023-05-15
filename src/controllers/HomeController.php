@@ -6,6 +6,10 @@ use \core\Controller;
 class HomeController extends Controller {
 
     public function index() {
-        $this->render('home');
+        if(!isset($_SESSION['user'])) {
+            $this->render('home');
+        } else {
+            $this->redirect('/feed/'.$_SESSION['user']['id']);
+        }
     }
 }
